@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux - Документация</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Flux" class="logo-img">
+                <span>Flux Docs</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">🏠 Главная</a>
+                <a href="overview.html" class="nav-link">📖 Обзор</a>
+                <a href="installation.html" class="nav-link">⚙️ Установка</a>
+                <a href="technical.html" class="nav-link">🔧 Техническая</a>
+                <a href="faq.html" class="nav-link">❓ FAQ</a>
+                <a href="development.html" class="nav-link">👨‍💻 Разработка</a>
+                <a href="guide.html" class="nav-link">🚀 Гайд</a>
+            </div>
+            <button id="themeToggle" class="btn btn-secondary btn-small">🌙 Тёмная тема</button>
+        </div>
+    </nav>
+
+    <!-- Контент -->
+    <div class="container main-content">
+        <!-- Хлебные крошки -->
+        <div class="breadcrumb">
+            <a href="index.html">Главная</a>
+            <span>›</span>
+            <span>Документация Flux</span>
+        </div>
+
+        <!-- Заголовок -->
+        <div class="card fade-in">
+            <h1>📚 Документация Flux</h1>
+            <p class="lead">Добро пожаловать в документацию проекта Flux!</p>
+            <div class="alert alert-info">
+                <strong>Flux</strong> - это автоматически обновляемая коллекция публичных VPN-конфигов, предназначенных для обхода блокировок.
+            </div>
+        </div>
+
+        <!-- Быстрые ссылки -->
+        <div class="card fade-in">
+            <h2>⚡ Быстрый доступ</h2>
+            <div class="grid grid-3">
+                <a href="installation.html" class="card" style="text-decoration: none;">
+                    <h3>⚙️ Установка</h3>
+                    <p>Начните использовать Flux за 5 минут</p>
+                    <span class="badge badge-primary">Начало работы</span>
+                </a>
+                <a href="faq.html" class="card" style="text-decoration: none;">
+                    <h3>❓ FAQ</h3>
+                    <p>Ответы на часто задаваемые вопросы</p>
+                    <span class="badge badge-success">Помощь</span>
+                </a>
+                <a href="guide.html" class="card" style="text-decoration: none;">
+                    <h3>🚀 Гайд</h3>
+                    <p>Обход CIDR блокировок через TurboPages</p>
+                    <span class="badge badge-warning">Продвинутое</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Содержание -->
+        <div class="card fade-in">
+            <h2>📋 Содержание документации</h2>
+            <div class="grid grid-2">
+                <div>
+                    <h3>📖 Обзор проекта</h3>
+                    <ul>
+                        <li>Что такое Flux?</li>
+                        <li>Ключевые особенности</li>
+                        <li>Структура проекта</li>
+                    </ul>
+                    <a href="overview.html" class="btn btn-primary">Читать →</a>
+                </div>
+                <div>
+                    <h3>⚙️ Установка и использование</h3>
+                    <ul>
+                        <li>Быстрая настройка</li>
+                        <li>Мобильные устройства</li>
+                        <li>Компьютеры</li>
+                    </ul>
+                    <a href="installation.html" class="btn btn-primary">Читать →</a>
+                </div>
+            </div>
+            <div class="grid grid-2" style="margin-top: 2rem;">
+                <div>
+                    <h3>🔧 Техническая документация</h3>
+                    <ul>
+                        <li>Архитектура генератора</li>
+                        <li>Алгоритм работы</li>
+                        <li>Оптимизации</li>
+                    </ul>
+                    <a href="technical.html" class="btn btn-primary">Читать →</a>
+                </div>
+                <div>
+                    <h3>👨‍💻 Разработка и вклад</h3>
+                    <ul>
+                        <li>Структура кода</li>
+                        <li>Запуск локально</li>
+                        <li>Внесение изменений</li>
+                    </ul>
+                    <a href="development.html" class="btn btn-primary">Читать →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ключевые особенности -->
+        <div class="card fade-in">
+            <h2>✨ Ключевые особенности Flux</h2>
+            <div class="grid grid-3">
+                <div>
+                    <h4>🔄 Автоматическое обновление</h4>
+                    <p>Конфиги обновляются каждые 12 часов через GitHub Actions</p>
+                </div>
+                <div>
+                    <h4>🔒 Безопасность</h4>
+                    <p>Фильтрация insecure параметров и валидация конфигов</p>
+                </div>
+                <div>
+                    <h4>📱 Оптимизация</h4>
+                    <p>Разделение больших файлов для мобильных устройств</p>
+                </div>
+                <div>
+                    <h4>🌐 Поддержка протоколов</h4>
+                    <p>V2Ray, VLESS, Trojan, VMess, Shadowsocks, Hysteria2, TUIC</p>
+                </div>
+                <div>
+                    <h4>🛡️ Обход блокировок</h4>
+                    <p>Специальные конфиги для обхода SNI/CIDR</p>
+                </div>
+                <div>
+                    <h4>📊 Организация</h4>
+                    <p>Конфиги разделены по типам и протоколам</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Навигация -->
+        <div class="page-nav">
+            <div></div>
+            <div class="page-info">
+                Страница 1 из 7<br>
+                <small>Главная страница</small>
+            </div>
+            <a href="overview.html" class="btn btn-primary">
+                Следующая: Обзор проекта →
+            </a>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Flux Documentation</strong>
+                <p style="margin-top: 0.5rem; color: #64748b;">Обновлено: <span class="current-date"></span></p>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-secondary btn-small">🏠 Главная</a>
+                <a href="404.html" class="btn btn-secondary btn-small">🔗 Все страницы</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+// app.js - Основной JavaScript для Flux документации
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Flux Documentation loaded');
+    
+    // Инициализация компонентов
+    initTheme();
+    initNavigation();
+    initFAQ();
+    initSearch();
+    initCodeBlocks();
+    initScrollSpy();
+    
+    // Установка текущей даты
+    setCurrentDate();
+    
+    // Добавление прогресс-бара
+    addProgressBar();
+});
+
+// Управление темой
+function initTheme() {
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('flux-theme') || 'light';
+    
+    // Установка начальной темы
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (themeToggle) themeToggle.textContent = '☀️ Светлая тема';
+    }
+    
+    // Обработчик переключения темы
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            localStorage.setItem('flux-theme', isDark ? 'dark' : 'light');
+            this.textContent = isDark ? '☀️ Светлая тема' : '🌙 Тёмная тема';
+            
+            // Отправка события для обновления компонентов
+            document.dispatchEvent(new CustomEvent('themeChange', {
+                detail: { theme: isDark ? 'dark' : 'light' }
+            }));
+        });
+    }
+}
+
+// Навигация
+function initNavigation() {
+    // Подсветка активной ссылки
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Добавление номеров страниц
+    const pageOrder = {
+        'index.html': 1,
+        'overview.html': 2,
+        'installation.html': 3,
+        'technical.html': 4,
+        'faq.html': 5,
+        'development.html': 6,
+        'guide.html': 7
+    };
+    
+    const currentPageNum = pageOrder[currentPage];
+    if (currentPageNum) {
+        const pageInfo = document.querySelector('.page-info');
+        if (pageInfo) {
+            pageInfo.innerHTML = `Страница ${currentPageNum} из 7<br><small>${document.title.replace(' - Flux', '')}</small>`;
+        }
+    }
+    
+    // Клавиатурная навигация
+    document.addEventListener('keydown', function(e) {
+        // Alt + стрелки для навигации
+        if (e.altKey) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    navigateTo('prev');
+                    break;
+                case 'ArrowRight':
+                    navigateTo('next');
+                    break;
+                case 'h':
+                    window.location.href = 'index.html';
+                    break;
+                case 's':
+                    document.getElementById('searchInput')?.focus();
+                    break;
+            }
+        }
+    });
+}
+
+// Навигация между страницами
+function navigateTo(direction) {
+    const pages = [
+        'index.html',
+        'overview.html',
+        'installation.html',
+        'technical.html',
+        'faq.html',
+        'development.html',
+        'guide.html'
+    ];
+    
+    const currentPage = window.location.pathname.split('/').pop();
+    const currentIndex = pages.indexOf(currentPage);
+    
+    if (currentIndex === -1) return;
+    
+    let targetIndex;
+    if (direction === 'prev' && currentIndex > 0) {
+        targetIndex = currentIndex - 1;
+    } else if (direction === 'next' && currentIndex < pages.length - 1) {
+        targetIndex = currentIndex + 1;
+    } else {
+        return;
+    }
+    
+    window.location.href = pages[targetIndex];
+}
+
+// FAQ система
+function initFAQ() {
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', function() {
+            const item = this.parentElement;
+            item.classList.toggle('active');
+            
+            // Закрытие других FAQ
+            if (item.classList.contains('active')) {
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            }
+        });
+    });
+    
+    // Кнопки управления FAQ
+    document.getElementById('expandAllFAQ')?.addEventListener('click', function() {
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.add('active');
+        });
+    });
+    
+    document.getElementById('collapseAllFAQ')?.addEventListener('click', function() {
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+        });
+    });
+}
+
+// Поиск по странице
+function initSearch() {
+    const searchInput = document.getElementById('searchInput');
+    if (!searchInput) return;
+    
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase().trim();
+        
+        if (!searchTerm) {
+            // Показать всё если поиск пустой
+            document.querySelectorAll('.searchable').forEach(el => {
+                el.style.display = '';
+            });
+            return;
+        }
+        
+        // Поиск по элементам с классом searchable
+        document.querySelectorAll('.searchable').forEach(el => {
+            const text = el.textContent.toLowerCase();
+            el.style.display = text.includes(searchTerm) ? '' : 'none';
+        });
+    });
+}
+
+// Подсветка кода
+function initCodeBlocks() {
+    document.querySelectorAll('pre code').forEach(block => {
+        // Простая подсветка ключевых слов
+        const code = block.textContent;
+        const highlighted = highlightCode(code);
+        block.innerHTML = highlighted;
+        
+        // Добавление кнопки копирования
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'btn btn-small btn-secondary';
+        copyBtn.textContent = '📋 Копировать';
+        copyBtn.style.position = 'absolute';
+        copyBtn.style.top = '10px';
+        copyBtn.style.right = '10px';
+        copyBtn.style.fontSize = '0.8rem';
+        
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+        block.parentNode.parentNode.insertBefore(wrapper, block.parentNode);
+        wrapper.appendChild(block.parentNode);
+        wrapper.appendChild(copyBtn);
+        
+        copyBtn.addEventListener('click', function() {
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = '✅ Скопировано!';
+                copyBtn.classList.add('btn-success');
+                
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.classList.remove('btn-success');
+                }, 2000);
+            });
+        });
+    });
+}
+
+// Простая подсветка синтаксиса
+function highlightCode(code) {
+    const patterns = {
+        keyword: /\b(function|return|const|let|var|if|else|for|while|class|import|from|export|default)\b/g,
+        string: /(["'`])(?:(?=(\\?))\2.)*?\1/g,
+        comment: /(\/\/.*$|\/\*[\s\S]*?\*\/)/gm,
+        number: /\b\d+(\.\d+)?\b/g
+    };
+    
+    let highlighted = code;
+    
+    highlighted = highlighted.replace(patterns.keyword, '<span class="code-keyword">$&</span>');
+    highlighted = highlighted.replace(patterns.string, '<span class="code-string">$&</span>');
+    highlighted = highlighted.replace(patterns.comment, '<span class="code-comment">$&</span>');
+    highlighted = highlighted.replace(patterns.number, '<span class="code-number">$&</span>');
+    
+    return highlighted;
+}
+
+// Слежение за скроллом
+function initScrollSpy() {
+    const headings = document.querySelectorAll('h2, h3');
+    const toc = document.getElementById('tableOfContents');
+    
+    if (!toc || headings.length === 0) return;
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.id;
+                if (!id) return;
+                
+                const link = toc.querySelector(`a[href="#${id}"]`);
+                if (link) {
+                    if (entry.isIntersecting) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        },
+        { rootMargin: '-20% 0px -70% 0px' }
+    );
+    
+    headings.forEach(heading => {
+        if (!heading.id) {
+            heading.id = heading.textContent
+                .toLowerCase()
+                .replace(/[^\w\s]/g, '')
+                .replace(/\s+/g, '-');
+        }
+        observer.observe(heading);
+    });
+}
+
+// Установка текущей даты
+function setCurrentDate() {
+    const dateElements = document.querySelectorAll('.current-date');
+    if (dateElements.length > 0) {
+        const now = new Date();
+        const options = { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            weekday: 'long'
+        };
+        const formattedDate = now.toLocaleDateString('ru-RU', options);
+        
+        dateElements.forEach(el => {
+            el.textContent = formattedDate;
+        });
+    }
+}
+
+// Добавление прогресс-бара чтения
+function addProgressBar() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    progressBar.innerHTML = '<div class="progress-fill"></div>';
+    
+    const contentStart = document.querySelector('h1');
+    if (contentStart) {
+        contentStart.parentNode.insertBefore(progressBar, contentStart);
+    }
+    
+    window.addEventListener('scroll', updateProgressBar);
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const winHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.pageYOffset;
+    const trackLength = docHeight - winHeight;
+    const progress = (scrollTop / trackLength) * 100;
+    
+    const progressFill = document.querySelector('.progress-fill');
+    if (progressFill) {
+        progressFill.style.width = `${progress}%`;
+    }
+}
+
+// Показать уведомление
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `alert alert-${type} fade-in`;
+    notification.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span>${message}</span>
+            <button onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; cursor: pointer; font-size: 1.2rem;">×</button>
+        </div>
+    `;
+    
+    const container = document.querySelector('.container') || document.body;
+    container.insertBefore(notification, container.firstChild);
+    
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.remove();
+        }
+    }, 5000);
+}
+
+// Глобальные утилиты
+window.FluxUtils = {
+    navigateTo,
+    showNotification,
+    copyToClipboard: function(text) {
+        return navigator.clipboard.writeText(text);
+    },
+    toggleTheme: function() {
+        document.getElementById('themeToggle')?.click();
+    }
+};
+
+// Генерация ссылок для гайда
+window.generateTurboLink = function() {
+    const url = document.getElementById('vpnUrl').value;
+    if (!url || !url.startsWith('http')) {
+        showNotification('Введите корректный URL', 'warning');
+        return;
+    }
+    
+    const encoded = encodeURIComponent(url);
+    const turboLink = `https://translate.yandex.ru/?source_lang=en&target_lang=en&text=${encoded}`;
+    
+    document.getElementById('generatedLink').value = turboLink;
+    document.getElementById('linkResult').style.display = 'block';
+};
+
+window.copyGeneratedLink = function() {
+    const link = document.getElementById('generatedLink').value;
+    FluxUtils.copyToClipboard(link).then(() => {
+        showNotification('Ссылка скопирована в буфер обмена!', 'success');
+    });
+};

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разработка и вклад - Flux</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Flux" class="logo-img">
+                <span>Flux Docs</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Главная</a>
+                <a href="overview.html" class="nav-link">📖 Обзор</a>
+                <a href="installation.html" class="nav-link">⚙️ Установка</a>
+                <a href="technical.html" class="nav-link">🔧 Техническая</a>
+                <a href="faq.html" class="nav-link">❓ FAQ</a>
+                <a href="development.html" class="nav-link active">👨‍💻 Разработка</a>
+                <a href="guide.html" class="nav-link">🚀 Гайд</a>
+            </div>
+            <button id="themeToggle" class="btn btn-secondary btn-small">🌙 Тёмная тема</button>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="faq.html" class="btn btn-secondary">← Назад: FAQ</a>
+            <div class="page-info">
+                Страница 6 из 7<br>
+                <small>Разработка и вклад</small>
+            </div>
+            <a href="guide.html" class="btn btn-primary">Следующая: Гайд →</a>
+        </div>
+
+        <!-- Контент -->
+        <div class="card fade-in">
+            <h1>👨‍💻 Разработка и вклад в Flux</h1>
+            <p class="lead">Присоединяйтесь к разработке! Этот раздел для разработчиков, которые хотят внести свой вклад.</p>
+        </div>
+
+        <div class="card fade-in">
+            <h2>📁 Структура исходного кода</h2>
+            <pre><code>source/
+├── main.py                 # Основной исполняемый файл
+├── config/                 # Настройки проекта
+│   ├── settings.py        # Общие настройки
+│   ├── URLS.txt           # Список URL
+│   ├── URLS_base64.txt    # Base64 подписки
+│   ├── whitelist-all.txt  # SNI домены
+│   └── cidrwhitelist.txt  # CIDR адреса
+├── fetchers/fetcher.py    # Загрузка конфигов
+├── processors/config_processor.py  # Обработка
+└── utils/                 # Вспомогательные модули
+    ├── logger.py          # Логирование
+    ├── file_utils.py      # Файловые операции
+    └── github_handler.py  # GitHub API</code></pre>
+        </div>
+
+        <div class="card fade-in">
+            <h2>✨ Новые функции и улучшения</h2>
+            <div class="alert alert-success">
+                <strong>Добавлена валидация:</strong> Функция <code>is_valid_vpn_config_url()</code> в модулях <code>processors/config_processor.py</code> и <code>utils/file_utils.py</code> проверяет, является ли строка действительной VPN конфигурацией по формату протокол://
+            </div>
+            <p>Все функции обработки теперь используют валидацию, чтобы избежать включения неподходящих строк (текстовых комментариев) в итоговые файлы.</p>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🚀 Запуск локально</h2>
+            <pre><code># Клонирование репозитория
+git clone https://github.com/username/flux
+cd flux/source
+
+# Установка зависимостей
+pip install -r requirements.txt
+
+# Настройка токена
+export MY_TOKEN=&lt;GITHUB_TOKEN&gt;  # токен с правом repo
+
+# Запуск генератора
+python main.py  # конфиги появятся в ../githubmirror</code></pre>
+            
+            <div class="alert alert-info">
+                <h4>Тестирование без загрузки:</h4>
+                <pre><code>python main.py --dry-run</code></pre>
+                <p>Выполнит все операции, кроме загрузки в GitHub.</p>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🤝 Внесение изменений</h2>
+            <ol>
+                <li><strong>Форкните репозиторий</strong></li>
+                <li><strong>Создайте ветку:</strong> <code>git checkout -b feature/новая-функция</code></li>
+                <li><strong>Внесите изменения</strong></li>
+                <li><strong>Сделайте коммит:</strong> <code>git commit -m 'Добавил новую функцию'</code></li>
+                <li><strong>Запушьте:</strong> <code>git push origin feature/новая-функция</code></li>
+                <li><strong>Создайте Pull Request</strong></li>
+            </ol>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🧪 Тестирование</h2>
+            <div class="grid grid-2">
+                <div>
+                    <h3>Локальное тестирование</h3>
+                    <pre><code># Тестовый запуск
+python main.py --dry-run
+
+# Запуск тестов
+python -m pytest tests/
+
+# Конкретный тест
+python -m pytest tests/test_fetchers.py
+
+# С покрытием кода
+python -m pytest --cov=src tests/</code></pre>
+                </div>
+                <div>
+                    <h3>Шаблоны</h3>
+                    <h4>📝 Issue:</h4>
+                    <pre><code>**Описание проблемы**
+**Шаги для воспроизведения**
+**Ожидаемое поведение**
+**Версия:** 1.0.0
+**ОС:** Windows/Linux/Mac</code></pre>
+                    
+                    <h4>🚀 Pull Request:</h4>
+                    <pre><code>## Описание изменений
+## Тип изменения
+## Чеклист
+- [ ] Код соответствует стилю
+- [ ] Добавлены тесты
+- [ ] Обновлена документация</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>📋 Требования</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Компонент</th>
+                        <th>Версия</th>
+                        <th>Назначение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Python</strong></td>
+                        <td>3.8+</td>
+                        <td>Основной язык</td>
+                    </tr>
+                    <tr>
+                        <td><strong>requests</strong></td>
+                        <td>2.28+</td>
+                        <td>HTTP запросы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PyGithub</strong></td>
+                        <td>1.55+</td>
+                        <td>GitHub API</td>
+                    </tr>
+                    <tr>
+                        <td><strong>python-dotenv</strong></td>
+                        <td>0.21+</td>
+                        <td>Переменные окружения</td>
+                    </tr>
+                    <tr>
+                        <td><strong>colorama</strong></td>
+                        <td>0.4.6+</td>
+                        <td>Цветной вывод</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🎯 Архитектурные принципы</h2>
+            <div class="grid grid-3">
+                <div>
+                    <h4>🧩 Модульность</h4>
+                    <p>Каждый компонент выполняет одну задачу</p>
+                </div>
+                <div>
+                    <h4>🧪 Тестируемость</h4>
+                    <p>Функции должны быть легко тестируемыми</p>
+                </div>
+                <div>
+                    <h4>⚡ Производительность</h4>
+                    <p>Параллельные операции, эффективные алгоритмы</p>
+                </div>
+                <div>
+                    <h4>🛡️ Устойчивость</h4>
+                    <p>Обработка ошибок внешних сервисов</p>
+                </div>
+                <div>
+                    <h4>📝 Документация</h4>
+                    <p>Код должен быть хорошо документирован</p>
+                </div>
+                <div>
+                    <h4>🔧 Поддерживаемость</h4>
+                    <p>Простота внесения изменений</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>📈 Дорожная карта</h2>
+            <div style="position: relative; margin: 2rem 0; padding-left: 2rem;">
+                <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, #6366f1, #10b981);"></div>
+                
+                <div style="margin-bottom: 2rem; position: relative;">
+                    <div style="position: absolute; left: -2.5rem; top: 0; background: #6366f1; color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">Q1</div>
+                    <h3>2024 Q1: Стабилизация</h3>
+                    <ul>
+                        <li>Улучшение обработки ошибок</li>
+                        <li>Оптимизация производительности</li>
+                        <li>Расширение тестового покрытия</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 2rem; position: relative;">
+                    <div style="position: absolute; left: -2.5rem; top: 0; background: #10b981; color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">Q2</div>
+                    <h3>2024 Q2: Новые функции</h3>
+                    <ul>
+                        <li>Поддержка новых протоколов</li>
+                        <li>Улучшение фильтрации</li>
+                        <li>API для разработчиков</li>
+                    </ul>
+                </div>
+                
+                <div style="position: relative;">
+                    <div style="position: absolute; left: -2.5rem; top: 0; background: #f59e0b; color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">Q3</div>
+                    <h3>2024 Q3: Расширение</h3>
+                    <ul>
+                        <li>Поддержка новых регионов</li>
+                        <li>Улучшение документации</li>
+                        <li>Интеграция с сервисами</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="faq.html" class="btn btn-secondary">← Назад: FAQ</a>
+            <div>
+                <a href="index.html" class="btn btn-secondary">🏠 Главная</a>
+                <button onclick="FluxUtils.toggleTheme()" class="btn btn-secondary">🎨 Тема</button>
+            </div>
+            <a href="guide.html" class="btn btn-primary">Следующая: Гайд →</a>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Flux Documentation</strong>
+                <p style="margin-top: 0.5rem; color: #64748b;">Обновлено: <span class="current-date"></span></p>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-secondary btn-small">🏠 Главная</a>
+                <a href="404.html" class="btn btn-secondary btn-small">🔗 Все страницы</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

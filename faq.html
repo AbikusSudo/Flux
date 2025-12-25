@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Часто задаваемые вопросы - Flux</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Flux" class="logo-img">
+                <span>Flux Docs</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Главная</a>
+                <a href="overview.html" class="nav-link">📖 Обзор</a>
+                <a href="installation.html" class="nav-link">⚙️ Установка</a>
+                <a href="technical.html" class="nav-link">🔧 Техническая</a>
+                <a href="faq.html" class="nav-link active">❓ FAQ</a>
+                <a href="development.html" class="nav-link">👨‍💻 Разработка</a>
+                <a href="guide.html" class="nav-link">🚀 Гайд</a>
+            </div>
+            <button id="themeToggle" class="btn btn-secondary btn-small">🌙 Тёмная тема</button>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="technical.html" class="btn btn-secondary">← Назад: Техническая</a>
+            <div class="page-info">
+                Страница 5 из 7<br>
+                <small>Часто задаваемые вопросы</small>
+            </div>
+            <a href="development.html" class="btn btn-primary">Следующая: Разработка →</a>
+        </div>
+
+        <!-- Поиск -->
+        <div class="card fade-in">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" class="search-input" placeholder="Поиск по вопросам...">
+            </div>
+        </div>
+
+        <!-- Контент -->
+        <div class="card fade-in">
+            <h1>❓ Часто задаваемые вопросы (FAQ)</h1>
+            <p class="lead">Ответы на наиболее распространенные вопросы о Flux.</p>
+        </div>
+
+        <div class="card fade-in">
+            <h2>📚 Общие вопросы</h2>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Что такое Flux?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Flux</strong> - это проект, который автоматически собирает, фильтрует и обновляет публичные VPN-конфиги для обхода блокировок. Конфиги обновляются каждые 12 часов.</p>
+                    <div class="alert alert-info">
+                        <strong>Ключевые особенности:</strong>
+                        <ul>
+                            <li>Автоматическое обновление конфигов</li>
+                            <li>Фильтрация по безопасности</li>
+                            <li>Поддержка множества протоколов</li>
+                            <li>Конфиги для обхода блокировок</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Как часто обновляются конфиги?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Конфиги обновляются автоматически <strong>каждые 12 часов</strong> с помощью GitHub Actions.</p>
+                    <pre><code># Расписание в GitHub Actions
+schedule:
+  - cron: '0 */12 * * *'  # Каждые 12 часов</code></pre>
+                </div>
+            </div>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Почему файлы разделены?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Все конфиги для обхода SNI/CIDR доступны в одном файле <code>bypass-all.txt</code>. Если возникают проблемы с производительностью (особенно на мобильных), файл разделен на части по 300 конфигов:</p>
+                    <ul>
+                        <li><code>bypass-1.txt</code> (первые 300)</li>
+                        <li><code>bypass-2.txt</code> (следующие 300)</li>
+                        <li>и так далее...</li>
+                    </ul>
+                    <div class="alert alert-warning">
+                        <strong>Рекомендация:</strong> Сначала попробуйте <code>bypass-all.txt</code>, если есть лаги - используйте разделённые файлы.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🔧 Технические вопросы</h2>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Какие протоколы поддерживаются?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Поддерживаются популярные протоколы:</p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Протокол</th>
+                                <th>Поддержка</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>V2Ray / VLESS / VMess</td><td><span class="badge badge-success">Полная</span></td></tr>
+                            <tr><td>Trojan</td><td><span class="badge badge-success">Полная</span></td></tr>
+                            <tr><td>Shadowsocks</td><td><span class="badge badge-success">Полная</span></td></tr>
+                            <tr><td>Hysteria2 / TUIC</td><td><span class="badge badge-success">Полная</span></td></tr>
+                            <tr><td>Reality</td><td><span class="badge badge-primary">Ограниченная</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Что такое "Обход SNI/CIDR белых списков"?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Это специальные конфиги, которые используют SNI домены из белых списков для обхода ограничений. Доступны в папках:</p>
+                    <ul>
+                        <li><code>bypass/</code> - только безопасные конфиги</li>
+                        <li><code>bypass-unsecure/</code> - все конфиги, включая небезопасные</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>В чем разница между bypass/ и bypass-unsecure/?</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="grid grid-2">
+                        <div>
+                            <h4>🛡️ bypass/</h4>
+                            <ul>
+                                <li>Только безопасные конфиги</li>
+                                <li>Без insecure параметров</li>
+                                <li>Рекомендуется для большинства</li>
+                            </ul>
+                            <span class="badge badge-success">Рекомендуется</span>
+                        </div>
+                        <div>
+                            <h4>⚠️ bypass-unsecure/</h4>
+                            <ul>
+                                <li>Все конфиги для обхода</li>
+                                <li>Включая небезопасные</li>
+                                <li>Только для опытных</li>
+                            </ul>
+                            <span class="badge badge-warning">С осторожностью</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Что такое папка split-by-protocols/?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Папка содержит конфиги, разделенные по протоколам в обеих версиях: secure (безопасные) и unsecure (все).</p>
+                    <pre><code>split-by-protocols/
+├── vless.txt
+├── vmess-secure.txt
+├── trojan.txt
+├── shadowsocks.txt
+└── ...</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🚨 Проблемы и решения</h2>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Не подключается ни один конфиг</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="alert alert-danger">
+                        <h4>Диагностика:</h4>
+                        <ol>
+                            <li>Перезапустите приложение и устройство</li>
+                            <li>Проверьте настройки брандмауэра</li>
+                            <li>Обновите список конфигов</li>
+                            <li>Попробуйте другой протокол</li>
+                            <li>Проверьте интернет-соединение</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Медленное подключение</h3>
+                </div>
+                <div class="faq-answer">
+                    <ul>
+                        <li><strong>Выберите конфиг с меньшим пингом</strong></li>
+                        <li><strong>Попробуйте разные протоколы</strong></li>
+                        <li><strong>Проверьте качество интернета</strong></li>
+                        <li>Используйте Shadowsocks или Hysteria2 для скорости</li>
+                        <li>Избегайте пиковых часов</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Проблемы с импортом на мобильном</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="alert alert-warning">
+                        <h4>Инструкция:</h4>
+                        <ol>
+                            <li>Сначала попробуйте <code>bypass-all.txt</code></li>
+                            <li>При проблемах - разделённые файлы</li>
+                            <li>Разделите импорт на части</li>
+                            <li>Обновите приложение</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🛡️ Безопасность</h2>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Насколько безопасны эти конфиги?</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="grid grid-2">
+                        <div>
+                            <h4>🟢 Папка bypass/</h4>
+                            <p><strong>Высокий уровень:</strong> Конфиги проходят фильтрацию, удалены insecure параметры.</p>
+                        </div>
+                        <div>
+                            <h4>🟡 Папка bypass-unsecure/</h4>
+                            <p><strong>Средний уровень:</strong> Все конфиги, для опытных пользователей.</p>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" style="margin-top: 1rem;">
+                        <strong>⚠️ Важно:</strong> Конфиги из открытых источников. Используйте на свой страх и риск. Рекомендуется для просмотра контента, не для чувствительных действий.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item searchable">
+                <div class="faq-question">
+                    <h3>Нужно ли доверять этим конфигам?</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="alert alert-warning">
+                        <h4>Реалистичные ожидания:</h4>
+                        <ul>
+                            <li>Как с любыми публичными VPN-конфигами</li>
+                            <li>Не обеспечивают полной анонимности</li>
+                            <li>Не для конфиденциальной информации</li>
+                            <li>Для максимальной безопасности используйте собственные серверы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Управление FAQ -->
+        <div class="card fade-in">
+            <div style="text-align: center;">
+                <button id="expandAllFAQ" class="btn btn-primary">📖 Развернуть все</button>
+                <button id="collapseAllFAQ" class="btn btn-secondary">📕 Свернуть все</button>
+            </div>
+        </div>
+
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="technical.html" class="btn btn-secondary">← Назад: Техническая</a>
+            <div>
+                <a href="index.html" class="btn btn-secondary">🏠 Главная</a>
+                <button onclick="FluxUtils.toggleTheme()" class="btn btn-secondary">🎨 Тема</button>
+            </div>
+            <a href="development.html" class="btn btn-primary">Следующая: Разработка →</a>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Flux Documentation</strong>
+                <p style="margin-top: 0.5rem; color: #64748b;">Обновлено: <span class="current-date"></span></p>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-secondary btn-small">🏠 Главная</a>
+                <a href="404.html" class="btn btn-secondary btn-small">🔗 Все страницы</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

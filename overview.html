@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обзор проекта - Flux</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Flux" class="logo-img">
+                <span>Flux Docs</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Главная</a>
+                <a href="overview.html" class="nav-link active">📖 Обзор</a>
+                <a href="installation.html" class="nav-link">⚙️ Установка</a>
+                <a href="technical.html" class="nav-link">🔧 Техническая</a>
+                <a href="faq.html" class="nav-link">❓ FAQ</a>
+                <a href="development.html" class="nav-link">👨‍💻 Разработка</a>
+                <a href="guide.html" class="nav-link">🚀 Гайд</a>
+            </div>
+            <button id="themeToggle" class="btn btn-secondary btn-small">🌙 Тёмная тема</button>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="index.html" class="btn btn-secondary">← Назад: Главная</a>
+            <div class="page-info">
+                Страница 2 из 7<br>
+                <small>Обзор проекта</small>
+            </div>
+            <a href="installation.html" class="btn btn-primary">Следующая: Установка →</a>
+        </div>
+
+        <!-- Контент -->
+        <div class="card fade-in">
+            <h1>📖 Обзор проекта Flux</h1>
+            <p class="lead">Flux - это автоматически обновляемая коллекция публичных VPN-конфигов для быстрого обхода блокировок.</p>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🚀 Основная концепция</h2>
+            <p>Проект генерирует и поддерживает актуальные конфигурации, которые можно импортировать практически в любой современный VPN-клиент:</p>
+            <ul>
+                <li><strong>v2rayNG</strong> - для Android</li>
+                <li><strong>NekoRay</strong> - кроссплатформенный клиент</li>
+                <li><strong>Throne</strong> - для Windows</li>
+                <li><strong>v2rayN</strong> - для Windows</li>
+                <li><strong>V2Box</strong> - для iOS</li>
+                <li><strong>v2RayTun</strong> - для iOS</li>
+                <li><strong>Hiddify</strong> - современный клиент</li>
+            </ul>
+        </div>
+
+        <div class="card fade-in">
+            <h2>✨ Особенности Flux</h2>
+            <div class="grid grid-3">
+                <div>
+                    <h4>⏰ Обновления</h4>
+                    <p>Ежедневные обновления каждые 12 часов через GitHub Actions</p>
+                </div>
+                <div>
+                    <h4>🔧 Фильтрация</h4>
+                    <p>Автоматическая дедупликация и фильтрация конфигов</p>
+                </div>
+                <div>
+                    <h4>📱 Оптимизация</h4>
+                    <p>Разделение файлов (максимум 300 конфигов) для мобильных</p>
+                </div>
+            </div>
+            <div class="grid grid-3" style="margin-top: 1rem;">
+                <div>
+                    <h4>🌐 Протоколы</h4>
+                    <p>Поддержка V2Ray, VLESS, Trojan, VMess, Shadowsocks, Hysteria2, TUIC</p>
+                </div>
+                <div>
+                    <h4>🔒 Безопасность</h4>
+                    <p>Фильтрация insecure параметров и улучшенная валидация</p>
+                </div>
+                <div>
+                    <h4>🛡️ Обход блокировок</h4>
+                    <p>Специальные конфиги для обхода SNI/CIDR белых списков</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>📁 Структура проекта</h2>
+            <pre><code>flux-project/
+├── githubmirror/          # Сгенерированные конфиги
+│   ├── default/          # Основные конфиги
+│   ├── bypass/           # Безопасные обходные
+│   ├── bypass-unsecure/  # Все обходные
+│   └── split-by-protocols/ # По протоколам
+├── qr-codes/             # QR-коды для импорта
+├── source/               # Исходный код
+├── docs/                 # Документация
+└── .github/workflows/    # Автоматизация</code></pre>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🔍 Улучшенная валидация</h2>
+            <div class="alert alert-success">
+                <strong>Новая функция:</strong> Теперь учитываются только строки, начинающиеся с поддерживаемого протокола (vless://, vmess://, trojan:// и др.) для предотвращения включения неподходящих строк.
+            </div>
+            <pre><code>// Пример валидации
+function isValidConfig(line) {
+    const protocols = ['vless://', 'vmess://', 'trojan://', 'ss://'];
+    return protocols.some(proto => line.startsWith(proto));
+}</code></pre>
+        </div>
+
+        <div class="card fade-in">
+            <h2>📊 Поддерживаемые протоколы</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Протокол</th>
+                        <th>Поддержка</th>
+                        <th>Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>VLESS</strong></td>
+                        <td><span class="badge badge-success">Полная</span></td>
+                        <td>Легковесный, современный</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VMess</strong></td>
+                        <td><span class="badge badge-success">Полная</span></td>
+                        <td>Широко распространён</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trojan</strong></td>
+                        <td><span class="badge badge-success">Полная</span></td>
+                        <td>Хорошо обходит DPI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shadowsocks</strong></td>
+                        <td><span class="badge badge-success">Полная</span></td>
+                        <td>Высокая скорость</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hysteria2</strong></td>
+                        <td><span class="badge badge-success">Полная</span></td>
+                        <td>Максимальная производительность</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TUIC</strong></td>
+                        <td><span class="badge badge-success">Полная</span></td>
+                        <td>Современный протокол</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="index.html" class="btn btn-secondary">← Назад: Главная</a>
+            <div>
+                <a href="index.html" class="btn btn-secondary">🏠 Главная</a>
+                <button onclick="FluxUtils.toggleTheme()" class="btn btn-secondary">🎨 Тема</button>
+            </div>
+            <a href="installation.html" class="btn btn-primary">Следующая: Установка →</a>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Flux Documentation</strong>
+                <p style="margin-top: 0.5rem; color: #64748b;">Обновлено: <span class="current-date"></span></p>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-secondary btn-small">🏠 Главная</a>
+                <a href="404.html" class="btn btn-secondary btn-small">🔗 Все страницы</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

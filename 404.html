@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена - Flux</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Flux" class="logo-img">
+                <span>Flux Docs</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Главная</a>
+                <a href="overview.html" class="nav-link">📖 Обзор</a>
+                <a href="installation.html" class="nav-link">⚙️ Установка</a>
+                <a href="technical.html" class="nav-link">🔧 Техническая</a>
+                <a href="faq.html" class="nav-link">❓ FAQ</a>
+                <a href="development.html" class="nav-link">👨‍💻 Разработка</a>
+                <a href="guide.html" class="nav-link">🚀 Гайд</a>
+            </div>
+            <button id="themeToggle" class="btn btn-secondary btn-small">🌙 Тёмная тема</button>
+        </div>
+    </nav>
+
+    <div class="container main-content" style="text-align: center; padding: 4rem 2rem;">
+        <!-- Логотип -->
+        <div class="logo-placeholder fade-in">
+            <div>404</div>
+        </div>
+        
+        <!-- Сообщение об ошибке -->
+        <div class="card fade-in" style="max-width: 600px; margin: 2rem auto;">
+            <h1 style="font-size: 4rem; color: #ef4444;">404</h1>
+            <h2>Страница не найдена</h2>
+            <p>Запрашиваемая вами страница не существует или была перемещена.</p>
+            <div class="alert alert-info">
+                <p>Возможно, вы перешли по устаревшей ссылке или допустили опечатку в адресе.</p>
+            </div>
+        </div>
+
+        <!-- Быстрые действия -->
+        <div class="card fade-in" style="max-width: 600px; margin: 2rem auto;">
+            <h3>🔍 Что делать дальше?</h3>
+            <div class="grid grid-2" style="margin: 1.5rem 0;">
+                <a href="index.html" class="btn btn-primary">🏠 На главную</a>
+                <button onclick="history.back()" class="btn btn-secondary">← Назад</button>
+            </div>
+            
+            <div class="search-box" style="margin: 1.5rem 0;">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" placeholder="Поиск по документации..." id="404Search">
+            </div>
+            
+            <div style="text-align: left; margin-top: 1.5rem;">
+                <h4>📚 Популярные страницы:</h4>
+                <ul>
+                    <li><a href="installation.html">⚙️ Установка и использование</a></li>
+                    <li><a href="faq.html">❓ Часто задаваемые вопросы</a></li>
+                    <li><a href="guide.html">🚀 Гайд по обходу CIDR</a></li>
+                    <li><a href="technical.html">🔧 Техническая документация</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Карта сайта -->
+        <div class="card fade-in" style="max-width: 800px; margin: 2rem auto;">
+            <h3>🗺️ Карта сайта Flux</h3>
+            <div class="grid grid-3">
+                <div>
+                    <h4>Основное</h4>
+                    <ul style="text-align: left;">
+                        <li><a href="index.html">Главная страница</a></li>
+                        <li><a href="overview.html">Обзор проекта</a></li>
+                        <li><a href="installation.html">Установка</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Документация</h4>
+                    <ul style="text-align: left;">
+                        <li><a href="technical.html">Техническая</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="development.html">Разработка</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Дополнительно</h4>
+                    <ul style="text-align: left;">
+                        <li><a href="guide.html">Гайд по CIDR</a></li>
+                        <li><a href="installation.html#android">Android</a></li>
+                        <li><a href="installation.html#ios">iOS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Техническая информация -->
+        <div class="card fade-in" style="max-width: 800px; margin: 2rem auto;">
+            <h3>🔧 Техническая информация</h3>
+            <div style="text-align: left;">
+                <p><strong>Ошибка:</strong> 404 Not Found</p>
+                <p><strong>Тип:</strong> Клиентская ошибка HTTP</p>
+                <p><strong>Описание:</strong> Сервер не может найти запрашиваемый ресурс</p>
+                <p><strong>URL:</strong> <span id="errorUrl"></span></p>
+                <p><strong>Время:</strong> <span class="current-date"></span></p>
+            </div>
+            <button onclick="report404Error()" class="btn btn-secondary" style="margin-top: 1rem;">⚠️ Сообщить об ошибке</button>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Flux Documentation</strong>
+                <p style="margin-top: 0.5rem; color: #64748b;">Обновлено: <span class="current-date"></span></p>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-secondary btn-small">🏠 Главная</a>
+                <a href="guide.html" class="btn btn-secondary btn-small">🚀 Гайд</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Заполнение технической информации
+        document.getElementById('errorUrl').textContent = window.location.href;
+        
+        // Поиск по документации
+        document.getElementById('404Search').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const term = this.value.toLowerCase();
+                const pages = [
+                    {url: 'index.html', title: 'Главная'},
+                    {url: 'overview.html', title: 'Обзор'},
+                    {url: 'installation.html', title: 'Установка'},
+                    {url: 'technical.html', title: 'Техническая'},
+                    {url: 'faq.html', title: 'FAQ'},
+                    {url: 'development.html', title: 'Разработка'},
+                    {url: 'guide.html', title: 'Гайд'}
+                ];
+                
+                const found = pages.find(p => 
+                    p.title.toLowerCase().includes(term) || 
+                    p.url.includes(term)
+                );
+                
+                if (found) {
+                    window.location.href = found.url;
+                } else {
+                    FluxUtils.showNotification('Ничего не найдено. Попробуйте другие слова.', 'warning');
+                }
+            }
+        });
+        
+        // Отчет об ошибке
+        function report404Error() {
+            const subject = 'Ошибка 404 в документации Flux';
+            const body = `URL: ${window.location.href}\n\nОписание проблемы:\n\nПредложения:\n\n`;
+            
+            FluxUtils.copyToClipboard(`Тема: ${subject}\n\n${body}`).then(() => {
+                FluxUtils.showNotification('Текст для отчета скопирован. Отправьте его на flux-support@example.com', 'success');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гайд: Обход CIDR через TurboPages - Flux</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Flux" class="logo-img">
+                <span>Flux Docs</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Главная</a>
+                <a href="overview.html" class="nav-link">📖 Обзор</a>
+                <a href="installation.html" class="nav-link">⚙️ Установка</a>
+                <a href="technical.html" class="nav-link">🔧 Техническая</a>
+                <a href="faq.html" class="nav-link">❓ FAQ</a>
+                <a href="development.html" class="nav-link">👨‍💻 Разработка</a>
+                <a href="guide.html" class="nav-link active">🚀 Гайд</a>
+            </div>
+            <button id="themeToggle" class="btn btn-secondary btn-small">🌙 Тёмная тема</button>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="development.html" class="btn btn-secondary">← Назад: Разработка</a>
+            <div class="page-info">
+                Страница 7 из 7<br>
+                <small>Гайд по обходу CIDR</small>
+            </div>
+            <div></div>
+        </div>
+
+        <!-- Контент -->
+        <div class="card fade-in" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white;">
+            <h1 style="color: white;">🚀 Гайд: Как обновить VPN подписку при активном CIDR</h1>
+            <p class="lead">Простой метод с использованием TurboPages для обхода блокировок. Разработан для работы в России.</p>
+        </div>
+
+        <div class="card fade-in">
+            <h2>📝 Пошаговая инструкция</h2>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin: 2rem 0;">
+                <div style="text-align: center; flex: 1; min-width: 150px; margin: 10px;">
+                    <div style="background: #6366f1; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto;">1</div>
+                    <h4 style="margin-top: 10px;">Открыть ссылку</h4>
+                    <p>Через Yandex Переводчик</p>
+                </div>
+                <div style="font-size: 2rem; color: #6366f1;">→</div>
+                <div style="text-align: center; flex: 1; min-width: 150px; margin: 10px;">
+                    <div style="background: #10b981; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto;">2</div>
+                    <h4 style="margin-top: 10px;">Сгенерировать</h4>
+                    <p>TurboPages ссылку</p>
+                </div>
+                <div style="font-size: 2rem; color: #10b981;">→</div>
+                <div style="text-align: center; flex: 1; min-width: 150px; margin: 10px;">
+                    <div style="background: #f59e0b; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto;">3</div>
+                    <h4 style="margin-top: 10px;">Использовать</h4>
+                    <p>Как подписку в VPN</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h3>Шаг 1: Откройте ссылку через переводчик</h3>
+            <p>Перейдите по этой ссылке, заменив <code>ВАША_ССЫЛКА</code> на URL вашей VPN подписки:</p>
+            <div class="alert alert-info">
+                <strong>Ссылка работает даже при активном CIDR:</strong>
+                <pre style="background: #1e293b; color: white; padding: 1rem; border-radius: 6px; margin-top: 1rem;">https://translate.yandex.ru/?source_lang=en&target_lang=en&text=ВАША_ССЫЛКА</pre>
+            </div>
+            
+            <div class="card" style="background: #e0f2fe;">
+                <h4>🛠️ Интерактивный генератор:</h4>
+                <input type="text" id="vpnUrl" class="search-input" placeholder="https://ваш-провайдер.com/subscription" style="margin: 1rem 0;">
+                <button onclick="generateTurboLink()" class="btn btn-primary">Сгенерировать ссылку</button>
+                
+                <div id="linkResult" style="display: none; margin-top: 1rem;">
+                    <p>Ваша ссылка:</p>
+                    <pre style="background: #1e293b; color: white; padding: 1rem; border-radius: 6px;"><code id="generatedLink"></code></pre>
+                    <button onclick="copyGeneratedLink()" class="btn btn-success">📋 Копировать ссылку</button>
+                    <a id="openLink" href="#" target="_blank" class="btn btn-primary">🔗 Открыть в новом окне</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h3>Шаг 2: Сгенерируйте TurboPages ссылку</h3>
+            <p>На странице перевода нажмите кнопку <strong>"Перевести страницу" (Translate Page)</strong>.</p>
+            <div class="alert alert-warning">
+                <strong>⚠️ Важно:</strong> TurboPages ссылка будет содержать ваш Session ID. Не делитесь полной ссылкой с другими!
+            </div>
+            <pre><code>Пример TurboPages ссылки:
+https://translated.turbopages.org/proxy_u/en-en.ru.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/https/example.com
+                    ↑
+             Ваш Session ID (храните в секрете!)</code></pre>
+        </div>
+
+        <div class="card fade-in">
+            <h3>Шаг 3: Используйте как подписку</h3>
+            <p>Используйте полученную TurboPages ссылку в качестве <strong>Subscription Link</strong> в вашем VPN клиенте.</p>
+            <div class="alert alert-success">
+                <strong>🎉 Готово!</strong> Теперь вы можете обновлять подписку даже при активных блокировках.
+            </div>
+            
+            <div class="grid grid-2">
+                <div>
+                    <h4>🤖 Android (v2rayNG)</h4>
+                    <ol>
+                        <li>Откройте приложение</li>
+                        <li><code>+ → Импорт из буфера обмена</code></li>
+                        <li>Вставьте TurboPages ссылку</li>
+                    </ol>
+                </div>
+                <div>
+                    <h4>🍎 iOS (V2Box)</h4>
+                    <ol>
+                        <li>Откройте приложение</li>
+                        <li>Импорт по ссылке</li>
+                        <li>Вставьте TurboPages ссылку</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>❓ FAQ по методу</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>TurboPages показывает "ограниченный" текст</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Вы повторно использовали URL неправильно. Всегда генерируйте новую TurboPages ссылку через переводчик.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>TurboPages возвращает "Не удалось перевести страницу"</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>URL не вернул корректный HTTP ответ (200 OK). Возможные причины:</p>
+                    <ul>
+                        <li>Сервер подписки недоступен</li>
+                        <li>Дождитесь отключения CIDR</li>
+                        <li>Проверьте URL позже</li>
+                    </ul>
+                    <pre><code>Пример ошибки:
+DownloaderResponseError.NoContent
+Message: The response body is empty</code></pre>
+                    <div class="alert alert-warning">
+                        <strong>Сообщения динамические:</strong> Могут быть разными, следите за изменениями.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Насколько это безопасно?</h3>
+                </div>
+                <div class="faq-answer">
+                    <div class="alert alert-success">
+                        <strong>✅ Да, этот метод полностью безопасен.</strong>
+                    </div>
+                    <p>Просто Роскомнадзор не любит такие методы, но нам всё равно, верно? 😄</p>
+                    <div class="grid grid-2">
+                        <div>
+                            <h4>🛡️ Аспекты безопасности:</h4>
+                            <ul>
+                                <li>Официальный сервис Yandex</li>
+                                <li>Сохранение шифрования</li>
+                                <li>Не требует дополнительного ПО</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>⚖️ Правовой статус:</h4>
+                            <ul>
+                                <li>Использование переводчика законно</li>
+                                <li>Обход блокировок - серая зона</li>
+                                <li>Риски минимальны</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>🔧 Технические детали</h2>
+            <div class="grid grid-2">
+                <div>
+                    <h4>🌐 Как это работает?</h4>
+                    <ol>
+                        <li>Yandex выступает как прокси-сервер</li>
+                        <li>Запросы идут через доверенный домен</li>
+                        <li>CIDR фильтры пропускают трафик от Yandex</li>
+                        <li>Вы получаете контент через обходной путь</li>
+                    </ol>
+                </div>
+                <div>
+                    <h4>📊 Преимущества</h4>
+                    <ul>
+                        <li><strong>Не требует настройки</strong> - работает из браузера</li>
+                        <li><strong>Бесплатно</strong> - использует бесплатные сервисы</li>
+                        <li><strong>Надёжно</strong> - работает при активном CIDR</li>
+                        <li><strong>Быстро</strong> - генерация за секунды</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>💡 Профессиональный совет</h2>
+            <p>Создайте закладку в браузере для быстрой генерации:</p>
+            <pre><code>javascript:(function(){
+    var url = prompt('Введите URL подписки:');
+    if(url) {
+        var encoded = encodeURIComponent(url);
+        var yandexLink = 'https://translate.yandex.ru/?source_lang=en&target_lang=en&text=' + encoded;
+        window.open(yandexLink, '_blank');
+    }
+})()</code></pre>
+            <p>Создайте новую закладку, вставьте этот код в поле URL и назовите "Генератор TurboPages".</p>
+        </div>
+
+        <div class="card fade-in">
+            <h2>📊 Сравнение методов обхода</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Метод</th>
+                        <th>Сложность</th>
+                        <th>Эффективность</th>
+                        <th>Рекомендация</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>TurboPages (этот гайд)</strong></td>
+                        <td><span class="badge badge-success">Низкая</span></td>
+                        <td><span class="badge badge-success">Высокая</span></td>
+                        <td>⭐️⭐️⭐️⭐️⭐️</td>
+                    </tr>
+                    <tr>
+                        <td>DNS-over-HTTPS</td>
+                        <td><span class="badge badge-primary">Средняя</span></td>
+                        <td><span class="badge badge-primary">Средняя</span></td>
+                        <td>⭐️⭐️⭐️</td>
+                    </tr>
+                    <tr>
+                        <td>Публичные прокси</td>
+                        <td><span class="badge badge-warning">Высокая</span></td>
+                        <td><span class="badge badge-warning">Низкая</span></td>
+                        <td>⭐️⭐️</td>
+                    </tr>
+                    <tr>
+                        <td>Tor Browser</td>
+                        <td><span class="badge badge-primary">Средняя</span></td>
+                        <td><span class="badge badge-success">Высокая</span></td>
+                        <td>⭐️⭐️⭐️⭐️</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="development.html" class="btn btn-secondary">← Назад: Разработка</a>
+            <div>
+                <a href="index.html" class="btn btn-secondary">🏠 Главная</a>
+                <button onclick="FluxUtils.toggleTheme()" class="btn btn-secondary">🎨 Тема</button>
+            </div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Flux Documentation</strong>
+                <p style="margin-top: 0.5rem; color: #64748b;">Обновлено: <span class="current-date"></span></p>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-secondary btn-small">🏠 Главная</a>
+                <a href="404.html" class="btn btn-secondary btn-small">🔗 Все страницы</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Дополнительные функции для гайда
+        function generateTurboLink() {
+            const url = document.getElementById('vpnUrl').value;
+            if (!url || !url.startsWith('http')) {
+                FluxUtils.showNotification('Введите корректный URL (начинается с http:// или https://)', 'warning');
+                return;
+            }
+            
+            const encoded = encodeURIComponent(url);
+            const turboLink = `https://translate.yandex.ru/?source_lang=en&target_lang=en&text=${encoded}`;
+            
+            document.getElementById('generatedLink').textContent = turboLink;
+            document.getElementById('openLink').href = turboLink;
+            document.getElementById('linkResult').style.display = 'block';
+            
+            FluxUtils.showNotification('Ссылка сгенерирована! Скопируйте и откройте в браузере', 'success');
+        }
+        
+        function copyGeneratedLink() {
+            const link = document.getElementById('generatedLink').textContent;
+            FluxUtils.copyToClipboard(link).then(() => {
+                FluxUtils.showNotification('Ссылка скопирована в буфер обмена!', 'success');
+            });
+        }
+        
+        // Установка примера при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('vpnUrl').value = 'https://example.com/vpn/subscription';
+        });
+    </script>
+</body>
+</html>
