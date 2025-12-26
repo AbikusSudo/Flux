@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подписки Flux - Прямые ссылки на конфиги</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Flux" class="logo-img">
+                <span>Flux Docs</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Главная</a>
+                <a href="overview.html" class="nav-link">📖 Обзор</a>
+                <a href="installation.html" class="nav-link">⚙️ Установка</a>
+                <a href="technical.html" class="nav-link">🔧 Техническая</a>
+                <a href="faq.html" class="nav-link">❓ FAQ</a>
+                <a href="development.html" class="nav-link">👨‍💻 Разработка</a>
+                <a href="guide.html" class="nav-link">🚀 Гайд</a>
+                <a href="subs.html" class="nav-link active">🔗 Подписки</a>
+                <a href="donate.html" class="nav-link">💖 Донат</a>
+            </div>
+            <button id="themeToggle" class="btn btn-secondary btn-small">🌙 Тёмная тема</button>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="guide.html" class="btn btn-secondary">← Назад: Гайд</a>
+            <div class="page-info">
+                Страница 8 из 9<br>
+                <small>Прямые подписки Flux</small>
+                <a href="donate.html" class="btn btn-primary">Следующая: Донат →</a>
+            </div>
+            <div></div>
+        </div>
+
+        <!-- Контент -->
+        <div class="card fade-in">
+            <h1>🔗 Подписки Flux</h1>
+            <p class="lead">Прямые ссылки на все доступные конфигурации. Просто скопируйте нужную ссылку и импортируйте в ваш VPN клиент.</p>
+            
+            <div class="alert alert-info">
+                <strong>Как использовать:</strong> Скопируйте ссылку и вставьте в ваш VPN клиент (v2rayNG, Throne, V2Box и т.д.). Для мобильных устройств используйте "Импорт из буфера обмена".
+            </div>
+        </div>
+
+        <!-- Поиск и фильтры -->
+        <div class="card fade-in">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="subsSearch" class="search-input" placeholder="Поиск по подпискам...">
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-type="all">Все</button>
+                <button class="filter-btn" data-type="bypass">CIDR Bypass</button>
+                <button class="filter-btn" data-type="unsecure">Unsecure</button>
+                <button class="filter-btn" data-type="default">Default</button>
+                <button class="filter-btn" data-type="protocol">По протоколам</button>
+            </div>
+            
+            <button onclick="FluxUtils.copyAllSubscriptions()" class="btn btn-primary">
+                📋 Копировать все подписки
+            </button>
+        </div>
+
+        <!-- Список подписок -->
+        <div class="subscriptions-container">
+            <!-- CIDR Bypass -->
+            <div class="card fade-in">
+                <h2>🛡️ CIDR Bypass (Безопасные)</h2>
+                <p class="subscription-description">Конфиги для обхода SNI/CIDR блокировок. Рекомендуется использовать при белых, не черных списках.</p>
+                
+                <div class="subscription-item" data-type="bypass">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass/bypass-all.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass/bypass-all.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass</div>
+                    <div class="subscription-description">Рекомендуется использовать при белых, не черных списках</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-bypass">Bypass</span>
+                        <span class="badge badge-success">Безопасный</span>
+                        <span class="badge badge-primary">Рекомендуется</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="bypass">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass/bypass-1.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass/bypass-1.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass 1</div>
+                    <div class="subscription-description">Первые 300 конфигов для обхода блокировок</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-bypass">Bypass</span>
+                        <span class="badge badge-success">Безопасный</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="bypass">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass/bypass-2.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass/bypass-2.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass 2</div>
+                    <div class="subscription-description">Вторые 300 конфигов для обхода блокировок</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-bypass">Bypass</span>
+                        <span class="badge badge-success">Безопасный</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="bypass">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass/bypass-3.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass/bypass-3.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass 3</div>
+                    <div class="subscription-description">Третьи 300 конфигов для обхода блокировок</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-bypass">Bypass</span>
+                        <span class="badge badge-success">Безопасный</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unsecure Bypass -->
+            <div class="card fade-in">
+                <h2>⚠️ CIDR Bypass Unsecure (Небезопасные)</h2>
+                <p class="subscription-description">Все конфиги для обхода, включая небезопасные. Используйте с осторожностью.</p>
+                
+                <div class="subscription-item" data-type="unsecure">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-all.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-all.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass Unsecure</div>
+                    <div class="subscription-description">Все конфиги, включая небезопасные</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-unsecure">Unsecure</span>
+                        <span class="badge badge-warning">Небезопасный</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="unsecure">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-1.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-1.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass Unsecure 1</div>
+                    <div class="subscription-description">Первые 300 небезопасных конфигов</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-unsecure">Unsecure</span>
+                        <span class="badge badge-warning">Небезопасный</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="unsecure">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-2.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-2.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass Unsecure 2</div>
+                    <div class="subscription-description">Вторые 300 небезопасных конфигов</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-unsecure">Unsecure</span>
+                        <span class="badge badge-warning">Небезопасный</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="unsecure">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-3.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-3.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass Unsecure 3</div>
+                    <div class="subscription-description">Третьи 300 небезопасных конфигов</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-unsecure">Unsecure</span>
+                        <span class="badge badge-warning">Небезопасный</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="unsecure">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-4.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-4.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass Unsecure 4</div>
+                    <div class="subscription-description">Четвертые 300 небезопасных конфигов</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-unsecure">Unsecure</span>
+                        <span class="badge badge-warning">Небезопасный</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="unsecure">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-5.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-5.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">CIDR Bypass Unsecure 5</div>
+                    <div class="subscription-description">Пятые 300 небезопасных конфигов</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-unsecure">Unsecure</span>
+                        <span class="badge badge-warning">Небезопасный</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Default -->
+            <div class="card fade-in">
+                <h2>📦 Основные конфиги (Default)</h2>
+                <p class="subscription-description">Основные конфигурации, разделенные по 100 конфигов в каждом файле.</p>
+                
+                <div class="subscription-item" data-type="default">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/default/all.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/default/all.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">All Configs</div>
+                    <div class="subscription-description">Все конфиги в одном файле</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-default">Default</span>
+                        <span class="badge badge-primary">Основной</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="default">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/default/all-secure.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/default/all-secure.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">All Secure</div>
+                    <div class="subscription-description">Только безопасные конфиги</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-default">Default</span>
+                        <span class="badge badge-success">Безопасный</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="default">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/default/1.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/default/1.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">Configs 1-100</div>
+                    <div class="subscription-description">Первые 100 конфигов</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-default">Default</span>
+                        <span class="badge badge-primary">Основной</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="default">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/default/2.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/default/2.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">Configs 101-200</div>
+                    <div class="subscription-description">Вторые 100 конфигов</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-default">Default</span>
+                        <span class="badge badge-primary">Основной</span>
+                    </div>
+                </div>
+                
+                <div class="subscription-item" data-type="default">
+                    <div class="subscription-url">
+                        <code>https://fflluuxx.work.gd/sub-public/default/3.txt</code>
+                        <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/default/3.txt">📋</button>
+                    </div>
+                    <div class="subscription-name">Configs 201-300</div>
+                    <div class="subscription-description">Третьи 100 конфигов</div>
+                    <div class="subscription-meta">
+                        <span class="subscription-type type-default">Default</span>
+                        <span class="badge badge-primary">Основной</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- По протоколам -->
+            <div class="card fade-in">
+                <h2>🔧 Конфиги по протоколам</h2>
+                <p class="subscription-description">Конфигурации, разделенные по типам протоколов. Доступны безопасные (secure) и все (all) версии.</p>
+                
+                <div class="grid grid-2">
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/vless-secure.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/vless-secure.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">VLESS Secure</div>
+                        <div class="subscription-description">Безопасные VLESS конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-success">Безопасный</span>
+                            <span class="badge badge-primary">VLESS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/vless.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/vless.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">VLESS All</div>
+                        <div class="subscription-description">Все VLESS конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-primary">VLESS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/vmess-secure.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/vmess-secure.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">VMess Secure</div>
+                        <div class="subscription-description">Безопасные VMess конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-success">Безопасный</span>
+                            <span class="badge badge-primary">VMess</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/vmess.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/vmess.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">VMess All</div>
+                        <div class="subscription-description">Все VMess конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-primary">VMess</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/trojan-secure.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/trojan-secure.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">Trojan Secure</div>
+                        <div class="subscription-description">Безопасные Trojan конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-success">Безопасный</span>
+                            <span class="badge badge-primary">Trojan</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/trojan.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/trojan.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">Trojan All</div>
+                        <div class="subscription-description">Все Trojan конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-primary">Trojan</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/ss-secure.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/ss-secure.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">Shadowsocks Secure</div>
+                        <div class="subscription-description">Безопасные Shadowsocks конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-success">Безопасный</span>
+                            <span class="badge badge-primary">Shadowsocks</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/ss.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/ss.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">Shadowsocks All</div>
+                        <div class="subscription-description">Все Shadowsocks конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-primary">Shadowsocks</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/hysteria2-secure.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/hysteria2-secure.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">Hysteria2 Secure</div>
+                        <div class="subscription-description">Безопасные Hysteria2 конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-success">Безопасный</span>
+                            <span class="badge badge-primary">Hysteria2</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/hysteria2.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/hysteria2.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">Hysteria2 All</div>
+                        <div class="subscription-description">Все Hysteria2 конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-primary">Hysteria2</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/tuic-secure.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/tuic-secure.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">TUIC Secure</div>
+                        <div class="subscription-description">Безопасные TUIC конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-success">Безопасный</span>
+                            <span class="badge badge-primary">TUIC</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-item" data-type="protocol">
+                        <div class="subscription-url">
+                            <code>https://fflluuxx.work.gd/sub-public/split-by-protocols/tuic.txt</code>
+                            <button class="btn-copy" data-url="https://fflluuxx.work.gd/sub-public/split-by-protocols/tuic.txt">📋</button>
+                        </div>
+                        <div class="subscription-name">TUIC All</div>
+                        <div class="subscription-description">Все TUIC конфиги</div>
+                        <div class="subscription-meta">
+                            <span class="subscription-type type-protocol">Protocol</span>
+                            <span class="badge badge-primary">TUIC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="guide.html" class="btn btn-secondary">← Назад: Гайд</a>
+            <div>
+                <a href="index.html" class="btn btn-secondary">🏠 Главная</a>
+                <button onclick="FluxUtils.toggleTheme()" class="btn btn-secondary">🎨 Тема</button>
+            </div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Flux Documentation</strong>
+                <p style="margin-top: 0.5rem; color: #64748b;">Обновлено: <span class="current-date"></span></p>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-secondary btn-small">🏠 Главная</a>
+                <button onclick="FluxUtils.copyAllSubscriptions()" class="btn btn-primary btn-small">📋 Копировать все</button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

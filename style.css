@@ -31,7 +31,6 @@ body.dark-mode {
     color: #cbd5e1;
 }
 
-/* Контейнеры */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -84,6 +83,7 @@ body.dark-mode {
     display: flex;
     gap: 1rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .nav-link {
@@ -164,6 +164,21 @@ body.dark-mode {
     font-size: 0.875rem;
 }
 
+.btn-copy {
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+.btn-copy:hover {
+    background: #0da271;
+}
+
 /* Карточки */
 .card {
     background: white;
@@ -186,6 +201,98 @@ body.dark-mode {
 
 .dark-mode .card:hover {
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Подписки */
+.subscription-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    background: white;
+}
+
+.dark-mode .subscription-item {
+    background: var(--dark-card);
+    border-color: #334155;
+}
+
+.subscription-url {
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    word-break: break-all;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    background: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.dark-mode .subscription-url {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.subscription-name {
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.dark-mode .subscription-name {
+    color: #e2e8f0;
+}
+
+.subscription-description {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.dark-mode .subscription-description {
+    color: #94a3b8;
+}
+
+.subscription-meta {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.subscription-type {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.type-bypass {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+}
+
+.type-default {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--secondary-color);
+}
+
+.type-unsecure {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+}
+
+.type-protocol {
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+}
+
+.subscription-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
 }
 
 /* Заголовки */
@@ -363,6 +470,10 @@ pre code {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
 /* Футер */
 .footer {
     background: white;
@@ -404,6 +515,79 @@ pre code {
 .page-info {
     text-align: center;
     color: #64748b;
+}
+
+/* Фильтры подписок */
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dark-mode .filter-btn {
+    background: var(--dark-card);
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+.filter-btn:hover {
+    background: var(--light-bg);
+}
+
+.dark-mode .filter-btn:hover {
+    background: #334155;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Поиск */
+.search-box {
+    position: relative;
+    margin: 1.5rem 0;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s;
+    background: white;
+}
+
+.dark-mode .search-input {
+    background: var(--dark-card);
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
 }
 
 /* FAQ */
@@ -509,42 +693,6 @@ pre code {
     color: #94a3b8;
 }
 
-/* Поиск */
-.search-box {
-    position: relative;
-    margin: 1.5rem 0;
-}
-
-.search-input {
-    width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.2s;
-    background: white;
-}
-
-.dark-mode .search-input {
-    background: var(--dark-card);
-    border-color: #334155;
-    color: #cbd5e1;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-}
-
-.search-icon {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #94a3b8;
-}
-
 /* Адаптивность */
 @media (max-width: 768px) {
     .nav-container {
@@ -553,7 +701,6 @@ pre code {
     }
     
     .nav-links {
-        flex-wrap: wrap;
         justify-content: center;
     }
     
@@ -565,7 +712,7 @@ pre code {
         font-size: 1.75rem;
     }
     
-    .grid-2, .grid-3 {
+    .grid-2, .grid-3, .grid-4 {
         grid-template-columns: 1fr;
     }
     
@@ -578,6 +725,10 @@ pre code {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
+    }
+    
+    .subscription-meta {
+        flex-direction: column;
     }
 }
 
@@ -615,18 +766,38 @@ pre code {
     z-index: 1000;
 }
 
-/* Логотип */
-.logo-placeholder {
-    width: 256px;
-    height: 256px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    border-radius: 20px;
+/* Пагинация */
+.pagination {
     display: flex;
-    align-items: center;
     justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.pagination button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.dark-mode .pagination button {
+    background: var(--dark-card);
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+.pagination button.active {
+    background: var(--primary-color);
     color: white;
-    font-size: 4rem;
-    font-weight: bold;
-    margin: 2rem auto;
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+    border-color: var(--primary-color);
+}
+
+.pagination button:hover:not(.active) {
+    background: var(--light-bg);
+}
+
+.dark-mode .pagination button:hover:not(.active) {
+    background: #334155;
 }

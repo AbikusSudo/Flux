@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSearch();
     initCodeBlocks();
     initScrollSpy();
+    initSubscriptions();
     
     // Установка текущей даты
     setCurrentDate();
@@ -65,14 +66,26 @@ function initNavigation() {
         'technical.html': 4,
         'faq.html': 5,
         'development.html': 6,
-        'guide.html': 7
+        'guide.html': 7,
+        'subs.html': 8,
+        'donate.html': 9
     };
     
     const currentPageNum = pageOrder[currentPage];
     if (currentPageNum) {
         const pageInfo = document.querySelector('.page-info');
         if (pageInfo) {
-            pageInfo.innerHTML = `Страница ${currentPageNum} из 7<br><small>${document.title.replace(' - Flux', '')}</small>`;
+            const pageNames = {
+                'index.html': 'Главная',
+                'overview.html': 'Обзор',
+                'installation.html': 'Установка',
+                'technical.html': 'Техническая',
+                'faq.html': 'FAQ',
+                'development.html': 'Разработка',
+                'guide.html': 'Гайд',
+                'subs.html': 'Подписки'
+            };
+            pageInfo.innerHTML = `Страница ${currentPageNum} из 8<br><small>${pageNames[currentPage]}</small>`;
         }
     }
     
@@ -90,8 +103,16 @@ function initNavigation() {
                 case 'h':
                     window.location.href = 'index.html';
                     break;
+                case 'm':
+                    window.location.href = 'donate.html';
+                    break;
                 case 's':
                     document.getElementById('searchInput')?.focus();
+                    break;
+                case 'p':
+                    if (window.location.pathname.includes('subs.html')) {
+                        break;
+                    }
                     break;
             }
         }
@@ -107,7 +128,9 @@ function navigateTo(direction) {
         'technical.html',
         'faq.html',
         'development.html',
-        'guide.html'
+        'guide.html',
+        'subs.html',
+        'donate.html'
     ];
     
     const currentPage = window.location.pathname.split('/').pop();
@@ -172,6 +195,9 @@ function initSearch() {
             document.querySelectorAll('.searchable').forEach(el => {
                 el.style.display = '';
             });
+            document.querySelectorAll('.subscription-item').forEach(el => {
+                el.style.display = '';
+            });
             return;
         }
         
@@ -179,6 +205,12 @@ function initSearch() {
         document.querySelectorAll('.searchable').forEach(el => {
             const text = el.textContent.toLowerCase();
             el.style.display = text.includes(searchTerm) ? '' : 'none';
+        });
+        
+        // Поиск по подпискам
+        document.querySelectorAll('.subscription-item').forEach(item => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(searchTerm) ? '' : 'none';
         });
     });
 }
@@ -238,6 +270,77 @@ function highlightCode(code) {
     highlighted = highlighted.replace(patterns.number, '<span class="code-number">$&</span>');
     
     return highlighted;
+}
+
+// Инициализация подписок
+function initSubscriptions() {
+    // Кнопки фильтрации
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const type = this.dataset.type;
+            
+            // Убрать активный класс со всех кнопок
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+            
+            // Добавить активный класс текущей кнопке
+            this.classList.add('active');
+            
+            // Показать/скрыть подписки
+            document.querySelectorAll('.subscription-item').forEach(item => {
+                if (type === 'all') {
+                    item.style.display = '';
+                } else {
+                    const itemType = item.dataset.type;
+                    item.style.display = itemType === type ? '' : 'none';
+                }
+            });
+        });
+    });
+    
+    // Кнопки копирования
+    document.querySelectorAll('.btn-copy').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const url = this.dataset.url;
+            navigator.clipboard.writeText(url).then(() => {
+                const originalText = this.textContent;
+                this.textContent = '✅ Скопировано!';
+                this.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = '';
+                }, 2000);
+            });
+        });
+    });
+    
+    // Поиск в подписках
+    const subsSearch = document.getElementById('subsSearch');
+    if (subsSearch) {
+        subsSearch.addEventListener('input', function() {
+            const term = this.value.toLowerCase();
+            
+            document.querySelectorAll('.subscription-item').forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(term) ? '' : 'none';
+            });
+        });
+    }
+}
+
+// Копирование всех подписок
+function copyAllSubscriptions() {
+    let allText = '';
+    
+    document.querySelectorAll('.subscription-url code').forEach(code => {
+        allText += code.textContent + '\n';
+    });
+    
+    navigator.clipboard.writeText(allText).then(() => {
+        showNotification('Все подписки скопированы в буфер обмена!', 'success');
+    });
 }
 
 // Слежение за скроллом
@@ -345,18 +448,6 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Глобальные утилиты
-window.FluxUtils = {
-    navigateTo,
-    showNotification,
-    copyToClipboard: function(text) {
-        return navigator.clipboard.writeText(text);
-    },
-    toggleTheme: function() {
-        document.getElementById('themeToggle')?.click();
-    }
-};
-
 // Генерация ссылок для гайда
 window.generateTurboLink = function() {
     const url = document.getElementById('vpnUrl').value;
@@ -374,7 +465,61 @@ window.generateTurboLink = function() {
 
 window.copyGeneratedLink = function() {
     const link = document.getElementById('generatedLink').value;
-    FluxUtils.copyToClipboard(link).then(() => {
+    navigator.clipboard.writeText(link).then(() => {
         showNotification('Ссылка скопирована в буфер обмена!', 'success');
     });
 };
+
+// Глобальные утилиты
+window.FluxUtils = {
+    navigateTo,
+    showNotification,
+    copyToClipboard: function(text) {
+        return navigator.clipboard.writeText(text);
+    },
+    toggleTheme: function() {
+        document.getElementById('themeToggle')?.click();
+    },
+    copyAllSubscriptions
+};
+
+// Инициализация пагинации
+function initPagination() {
+    const itemsPerPage = 10;
+    const subscriptionItems = document.querySelectorAll('.subscription-item');
+    const totalPages = Math.ceil(subscriptionItems.length / itemsPerPage);
+    
+    if (totalPages <= 1) return;
+    
+    const paginationContainer = document.createElement('div');
+    paginationContainer.className = 'pagination';
+    
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.addEventListener('click', () => showPage(i, subscriptionItems, itemsPerPage));
+        paginationContainer.appendChild(button);
+    }
+    
+    const container = document.querySelector('.subscriptions-container');
+    if (container) {
+        container.appendChild(paginationContainer);
+    }
+    
+    // Показать первую страницу
+    showPage(1, subscriptionItems, itemsPerPage);
+}
+
+function showPage(pageNumber, items, itemsPerPage) {
+    const start = (pageNumber - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    
+    items.forEach((item, index) => {
+        item.style.display = (index >= start && index < end) ? '' : 'none';
+    });
+    
+    // Обновить активную кнопку пагинации
+    document.querySelectorAll('.pagination button').forEach((btn, index) => {
+        btn.classList.toggle('active', index === pageNumber - 1);
+    });
+}
