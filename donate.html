@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поддержать Flux - Донат</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        .donate-hero {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .donate-hero h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .donate-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .donate-amount {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .donate-amount:hover {
+            border-color: #6366f1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+        
+        .donate-amount.selected {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .donate-amount .amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6366f1;
+        }
+        
+        .donate-amount .rub {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .donate-link {
+            display: inline-block;
+            background: #ff5c5c;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            transition: all 0.2s;
+        }
+        
+        .donate-link:hover {
+            background: #ff4444;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 92, 92, 0.3);
+        }
+        
+        .donate-link:active {
+            transform: translateY(0);
+        }
+        
+        .donor-list {
+            margin-top: 3rem;
+        }
+        
+        .donor-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .donor-item:last-child {
+            border-bottom: none;
+        }
+        
+        .donor-name {
+            font-weight: 500;
+        }
+        
+        .donor-amount {
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .donor-note {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+        
+        .custom-amount {
+            margin-top: 1.5rem;
+        }
+        
+        .custom-input {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .custom-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .custom-input input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+        
+        .why-donate {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+        
+        .dark-mode .why-donate {
+            background: #1e293b;
+        }
+        
+        .dark-mode .donate-amount {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .dark-mode .donor-item {
+            border-color: #334155;
+        }
+        
+        @media (max-width: 768px) {
+            .donate-hero {
+                padding: 2rem 1rem;
+            }
+            
+            .donate-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .custom-input {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Flux" class="logo-img">
+                <span>Flux Docs</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Главная</a>
+                <a href="overview.html" class="nav-link">📖 Обзор</a>
+                <a href="installation.html" class="nav-link">⚙️ Установка</a>
+                <a href="technical.html" class="nav-link">🔧 Техническая</a>
+                <a href="faq.html" class="nav-link">❓ FAQ</a>
+                <a href="development.html" class="nav-link">👨‍💻 Разработка</a>
+                <a href="guide.html" class="nav-link">🚀 Гайд</a>
+                <a href="subs.html" class="nav-link">🔗 Подписки</a>
+                <a href="donate.html" class="nav-link active">💖 Донат</a>
+            </div>
+            <button id="themeToggle" class="btn btn-secondary btn-small">🌙 Тёмная тема</button>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="subs.html" class="btn btn-secondary">← Назад: Подписки</a>
+            <div class="page-info">
+                <small>Поддержать проект</small>
+            </div>
+            <div></div>
+        </div>
+
+        <!-- Герой секция -->
+        <div class="donate-hero fade-in">
+            <h1>💖 Поддержите Flux</h1>
+            <p>Ваша поддержка помогает развивать проект и поддерживать сервера</p>
+            <div style="margin-top: 1rem; font-size: 1.1rem;">
+                🚀 Flux — это проект с открытым исходным кодом, который существует благодаря вам
+            </div>
+        </div>
+
+        <!-- Способы доната -->
+        <div class="card fade-in">
+            <h2>🎯 Поддержать через DonationAlerts</h2>
+            <p>Быстрый и удобный способ поддержать проект. Выберите сумму или введите свою:</p>
+            
+            <div class="donate-amounts" id="amountsContainer">
+                <div class="donate-amount" data-amount="100">
+                    <div class="amount">100</div>
+                    <div class="rub">рублей</div>
+                </div>
+                <div class="donate-amount" data-amount="300">
+                    <div class="amount">300</div>
+                    <div class="rub">рублей</div>
+                </div>
+                <div class="donate-amount" data-amount="500">
+                    <div class="amount">500</div>
+                    <div class="rub">рублей</div>
+                </div>
+                <div class="donate-amount" data-amount="1000">
+                    <div class="amount">1000</div>
+                    <div class="rub">рублей</div>
+                </div>
+            </div>
+            
+            <div class="custom-amount">
+                <div class="custom-input">
+                    <input type="number" id="customAmount" placeholder="Другая сумма" min="1" step="1">
+                    <span style="white-space: nowrap;">рублей</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://www.donationalerts.com/r/fluxvpn" 
+                   target="_blank" 
+                   class="donate-link" 
+                   id="donateLink">
+                    🔗 Перейти к донату
+                </a>
+                <p style="color: #64748b; margin-top: 0.5rem; font-size: 0.9rem;">
+                    Откроется страница DonationAlerts в новом окне
+                </p>
+            </div>
+        </div>
+
+        <!-- За что идут донаты -->
+        <div class="why-donate fade-in">
+            <h2>📊 На что идут донаты?</h2>
+            <div class="grid grid-2" style="margin-top: 1.5rem;">
+                <div>
+                    <h3>🛠️ Развитие проекта</h3>
+                    <ul>
+                        <li>Улучшение алгоритмов фильтрации</li>
+                        <li>Добавление новых протоколов</li>
+                        <li>Оптимизация производительности</li>
+                        <li>Разработка новых функций</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>⚡ Поддержка инфраструктуры</h3>
+                    <ul>
+                        <li>Обслуживание серверов</li>
+                        <li>Оплата доменов и SSL</li>
+                        <li>Резервное копирование</li>
+                        <li>Мониторинг доступности</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Список донатеров -->
+        <div class="card fade-in donor-list">
+            <h2>🎖️ Последние донатеры</h2>
+            <p>Спасибо всем, кто поддерживает проект! Вот некоторые из недавних донатеров:</p>
+            
+            <div style="margin-top: 1.5rem;">
+                <div class="donor-item">
+                    <div>
+                        <div class="donor-name">Black (TG @BlackApple_47)</div>
+                        <div class="donor-note">Первый донатер проекта (Спасибо!)</div>
+                    </div>
+                    <div class="donor-amount">176 RUB</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
+                <p style="color: #64748b;">Ваше имя появится здесь после доната спустя время</p>
+                <button onclick="scrollToDonate()" class="btn btn-primary" style="margin-top: 1rem;">
+                    💖 Стать донатером
+                </button>
+            </div>
+        </div>
+
+        <!-- FAQ по донатам -->
+        <div class="card fade-in">
+            <h2>❓ Частые вопросы</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Как часто нужно донатить?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Любая сумма и любая периодичность приветствуются. Даже разовый донат помогает проекту.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Можно ли донатить анонимно?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, DonationAlerts позволяет делать анонимные донаты. Вы можете указать любое имя или оставить анонимным.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Будут ли мои данные в безопасности?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, все платежи обрабатываются через защищённый сервис DonationAlerts. Мы не храним ваши платежные данные.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Можно ли донатить другими способами?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>В данный момент доступен только DonationAlerts. В будущем могут быть добавлены другие способы. Карту не даю 🚫</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Навигация -->
+        <div class="page-nav">
+            <a href="subs.html" class="btn btn-secondary">← Назад: Подписки</a>
+            <div>
+                <a href="index.html" class="btn btn-secondary">🏠 Главная</a>
+                <button onclick="FluxUtils.toggleTheme()" class="btn btn-secondary">🎨 Тема</button>
+            </div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Flux Documentation</strong>
+                <p style="margin-top: 0.5rem; color: #64748b;">Обновлено: <span class="current-date"></span></p>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-secondary btn-small">🏠 Главная</a>
+                <a href="donate.html" class="btn btn-primary btn-small">💖 Поддержать</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Логика для донатов
+        let selectedAmount = 100;
+        
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Выбрать первую сумму по умолчанию
+            selectAmount(100);
+            
+            // Обработчики для кнопок сумм
+            document.querySelectorAll('.donate-amount').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const amount = parseInt(this.dataset.amount);
+                    selectAmount(amount);
+                });
+            });
+            
+            // Обработчик для кастомной суммы
+            document.getElementById('customAmount').addEventListener('input', function() {
+                const value = parseInt(this.value) || 0;
+                if (value > 0) {
+                    selectCustomAmount(value);
+                }
+            });
+            
+            // Обновить ссылку доната
+            updateDonateLink();
+        });
+        
+        function selectAmount(amount) {
+            // Убрать выделение со всех кнопок
+            document.querySelectorAll('.donate-amount').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Выделить выбранную кнопку
+            document.querySelector(`.donate-amount[data-amount="${amount}"]`)?.classList.add('selected');
+            
+            // Обновить выбранную сумму
+            selectedAmount = amount;
+            
+            // Очистить кастомное поле
+            document.getElementById('customAmount').value = '';
+            
+            // Обновить ссылку
+            updateDonateLink();
+        }
+        
+        function selectCustomAmount(amount) {
+            // Убрать выделение со всех кнопок
+            document.querySelectorAll('.donate-amount').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Обновить выбранную сумму
+            selectedAmount = amount;
+            
+            // Обновить ссылку
+            updateDonateLink();
+        }
+        
+        function updateDonateLink() {
+            const link = document.getElementById('donateLink');
+            // DonationAlerts не поддерживает указание суммы в URL, оставляем базовый URL
+            link.href = 'https://www.donationalerts.com/r/fluxvpn';
+            
+            // Можно добавить текст с выбранной суммой
+            link.textContent = selectedAmount === 100 ? '🔗 Перейти к донату' : `🔗 Поддержать ${selectedAmount} RUB`;
+        }
+        
+        function scrollToDonate() {
+            document.querySelector('.donate-hero').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+        
+        // Добавить анимацию для списка донатеров
+        document.querySelectorAll('.donor-item').forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                item.style.transition = 'opacity 0.5s, transform 0.5s';
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 100);
+            }, index * 100);
+        });
+        
+        // Добавить обработчик для FAQ на этой странице
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

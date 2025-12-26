@@ -1,0 +1,128 @@
+# Flux Subscriptions List
+# Generated: 2024-01-15
+# Total: 256 files
+# Auto-update: Every 12 hours
+
+# ========================
+# CIDR BYPASS (SNI Bypass)
+# ========================
+
+https://fflluuxx.work.gd/sub-public/bypass/bypass-all.txt#CIDR Bypass[Рекомендуется использовать при белых, не черных списках]
+
+# ============================
+# CIDR BYPASS UNSECURE (All)
+# ============================
+
+https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-all.txt#CIDR Bypass Unsecure All[Все конфиги, включая небезопасные]
+https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-1.txt#CIDR Bypass Unsecure 1[Первые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-2.txt#CIDR Bypass Unsecure 2[Вторые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-3.txt#CIDR Bypass Unsecure 3[Третьи 300 конфигов]
+https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-4.txt#CIDR Bypass Unsecure 4[Четвертые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/bypass-unsecure/bypass-unsecure-5.txt#CIDR Bypass Unsecure 5[Пятые 300 конфигов]
+
+# ==============
+# DEFAULT FILES
+# ==============
+
+https://fflluuxx.work.gd/sub-public/default/all.txt#All Configs[Все конфиги в одном файле]
+https://fflluuxx.work.gd/sub-public/default/all-secure.txt#All Secure Configs[Только безопасные конфиги]
+
+# Default Files 1-50
+https://fflluuxx.work.gd/sub-public/default/1.txt#Default 1[Первые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/2.txt#Default 2[Вторые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/3.txt#Default 3[Третьи 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/4.txt#Default 4[Четвертые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/5.txt#Default 5[Пятые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/6.txt#Default 6[Шестые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/7.txt#Default 7[Седьмые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/8.txt#Default 8[Восьмые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/9.txt#Default 9[Девятые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/10.txt#Default 10[Десятые 300 конфигов]
+https://fflluuxx.work.gd/sub-public/default/11.txt#Default 11
+https://fflluuxx.work.gd/sub-public/default/12.txt#Default 12
+https://fflluuxx.work.gd/sub-public/default/13.txt#Default 13
+https://fflluuxx.work.gd/sub-public/default/14.txt#Default 14
+https://fflluuxx.work.gd/sub-public/default/15.txt#Default 15
+https://fflluuxx.work.gd/sub-public/default/16.txt#Default 16
+https://fflluuxx.work.gd/sub-public/default/17.txt#Default 17
+https://fflluuxx.work.gd/sub-public/default/18.txt#Default 18
+https://fflluuxx.work.gd/sub-public/default/19.txt#Default 19
+https://fflluuxx.work.gd/sub-public/default/20.txt#Default 20
+https://fflluuxx.work.gd/sub-public/default/21.txt#Default 21
+https://fflluuxx.work.gd/sub-public/default/22.txt#Default 22
+https://fflluuxx.work.gd/sub-public/default/23.txt#Default 23
+https://fflluuxx.work.gd/sub-public/default/24.txt#Default 24
+https://fflluuxx.work.gd/sub-public/default/25.txt#Default 25
+https://fflluuxx.work.gd/sub-public/default/26.txt#Default 26
+https://fflluuxx.work.gd/sub-public/default/27.txt#Default 27
+https://fflluuxx.work.gd/sub-public/default/28.txt#Default 28
+https://fflluuxx.work.gd/sub-public/default/29.txt#Default 29
+https://fflluuxx.work.gd/sub-public/default/30.txt#Default 30
+https://fflluuxx.work.gd/sub-public/default/31.txt#Default 31
+https://fflluuxx.work.gd/sub-public/default/32.txt#Default 32
+https://fflluuxx.work.gd/sub-public/default/33.txt#Default 33
+https://fflluuxx.work.gd/sub-public/default/34.txt#Default 34
+https://fflluuxx.work.gd/sub-public/default/35.txt#Default 35
+https://fflluuxx.work.gd/sub-public/default/36.txt#Default 36
+https://fflluuxx.work.gd/sub-public/default/37.txt#Default 37
+https://fflluuxx.work.gd/sub-public/default/38.txt#Default 38
+https://fflluuxx.work.gd/sub-public/default/39.txt#Default 39
+https://fflluuxx.work.gd/sub-public/default/40.txt#Default 40
+https://fflluuxx.work.gd/sub-public/default/41.txt#Default 41
+https://fflluuxx.work.gd/sub-public/default/42.txt#Default 42
+https://fflluuxx.work.gd/sub-public/default/43.txt#Default 43
+https://fflluuxx.work.gd/sub-public/default/44.txt#Default 44
+https://fflluuxx.work.gd/sub-public/default/45.txt#Default 45
+https://fflluuxx.work.gd/sub-public/default/46.txt#Default 46
+https://fflluuxx.work.gd/sub-public/default/47.txt#Default 47
+https://fflluuxx.work.gd/sub-public/default/48.txt#Default 48
+https://fflluuxx.work.gd/sub-public/default/49.txt#Default 49
+https://fflluuxx.work.gd/sub-public/default/50.txt#Default 50
+
+# ===========================
+# PROTOCOL SPECIFIC FILES
+# ===========================
+
+# VLESS
+https://fflluuxx.work.gd/sub-public/split-by-protocols/vless.txt#VLESS All[Все конфиги VLESS]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/vless-secure.txt#VLESS Secure[Только безопасные VLESS]
+
+# VMESS
+https://fflluuxx.work.gd/sub-public/split-by-protocols/vmess.txt#VMESS All[Все конфиги VMESS]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/vmess-secure.txt#VMESS Secure[Только безопасные VMESS]
+
+# TROJAN
+https://fflluuxx.work.gd/sub-public/split-by-protocols/trojan.txt#Trojan All[Все конфиги Trojan]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/trojan-secure.txt#Trojan Secure[Только безопасные Trojan]
+
+# SHADOWSOCKS
+https://fflluuxx.work.gd/sub-public/split-by-protocols/ss.txt#Shadowsocks All[Все конфиги Shadowsocks]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/ss-secure.txt#Shadowsocks Secure[Только безопасные Shadowsocks]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/ssr.txt#ShadowsocksR All[Все конфиги ShadowsocksR]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/ssr-secure.txt#ShadowsocksR Secure[Только безопасные ShadowsocksR]
+
+# HYSTERIA
+https://fflluuxx.work.gd/sub-public/split-by-protocols/hysteria.txt#Hysteria All[Все конфиги Hysteria]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/hysteria-secure.txt#Hysteria Secure[Только безопасные Hysteria]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/hysteria2.txt#Hysteria2 All[Все конфиги Hysteria2]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/hysteria2-secure.txt#Hysteria2 Secure[Только безопасные Hysteria2]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/hy2.txt#HY2 All[Все конфиги HY2]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/hy2-secure.txt#HY2 Secure[Только безопасные HY2]
+
+# TUIC
+https://fflluuxx.work.gd/sub-public/split-by-protocols/tuic.txt#TUIC All[Все конфиги TUIC]
+https://fflluuxx.work.gd/sub-public/split-by-protocols/tuic-secure.txt#TUIC Secure[Только безопасные TUIC]
+
+# ====================
+# IMPORTANT NOTES
+# ====================
+
+# Обновление: Каждые 12 часов
+# Безопасные файлы: *-secure.txt
+# Для обхода CIDR: bypass/*
+# Все конфиги: bypass-unsecure/*
+# По протоколам: split-by-protocols/*
+
+# Для мобильных: Используйте разделенные файлы (1.txt, 2.txt, ...)
+# Для скорости: Используйте Shadowsocks или Hysteria2
+# Для обхода: Используйте bypass файлы
