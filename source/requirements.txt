@@ -1,4 +1,0 @@
-requests
-PyGithub
-tzdata
-urllib3
